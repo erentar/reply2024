@@ -17,7 +17,7 @@ silverPoints = list1[goldenPointsCount+1:goldenPointsCount+1+silverPointsCount]
 silverPoints = listToDict(silverPoints,["x","y","score"])
 
 tiles = list1[goldenPointsCount+1+silverPointsCount:goldenPointsCount+1+silverPointsCount+tileTypes]
-tiles = listToDict(tiles,["id","cost","types"])
+tiles = listToDict(tiles,["id","cost","count"])
 
 tileToDirection = {
     "3":{"w","e"},
