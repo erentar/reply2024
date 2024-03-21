@@ -7,31 +7,33 @@ list1 = [[int(column) if column.isdigit() else column for column in row] for row
 
 columns, rows, goldenPointsCount, silverPointsCount, tileTypes = list1[0]
 
-def listToDict(list2,keys):
+
+def listToDict(list2, keys):
     return [dict(zip(keys, row)) for row in list2]
 
-goldenPoints = list1[1:goldenPointsCount+1]
-goldenPoints = listToDict(goldenPoints,["x","y"])
 
-silverPoints = list1[goldenPointsCount+1:goldenPointsCount+1+silverPointsCount]
-silverPoints = listToDict(silverPoints,["x","y","score"])
+goldenPoints = list1[1:goldenPointsCount + 1]
+goldenPoints = listToDict(goldenPoints, ["x", "y"])
 
-tiles = list1[goldenPointsCount+1+silverPointsCount:goldenPointsCount+1+silverPointsCount+tileTypes]
-tiles = listToDict(tiles,["id","cost","count"])
+silverPoints = list1[goldenPointsCount + 1:goldenPointsCount + 1 + silverPointsCount]
+silverPoints = listToDict(silverPoints, ["x", "y", "score"])
+
+tiles = list1[goldenPointsCount + 1 + silverPointsCount:goldenPointsCount + 1 + silverPointsCount + tileTypes]
+tiles = listToDict(tiles, ["id", "cost", "count"])
 
 tileToDirection = {
-    "3":{"w","e"},
-    "5":{"s","e"},
-    "6":{"s","w"},
-    "7":{"s","e","w"},
-    "9":{"n","e"},
-    "A":{"w","n"},
-    "B":{"w","n","e"},
-    "C":{"n","s"},
-    "D":{"n","s","e"},
-    "E":{"n","s","w"},
-    "F":{"n","s","w","e"}
+    "3": {"w", "e"},
+    "5": {"s", "e"},
+    "6": {"s", "w"},
+    "7": {"s", "e", "w"},
+    "9": {"n", "e"},
+    "A": {"w", "n"},
+    "B": {"w", "n", "e"},
+    "C": {"n", "s"},
+    "D": {"n", "s", "e"},
+    "E": {"n", "s", "w"},
+    "F": {"n", "s", "w", "e"}
 }
 
 for tile in tiles:
-    tile["direction"]=tileToDirection[str(tile["id"])]
+    tile["direction"] = tileToDirection[str(tile["id"])]
