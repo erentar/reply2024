@@ -5,7 +5,7 @@ with open("data/00-trailer.txt", "r") as file:
 # convert everything to int
 list1 = [[int(column) if column.isdigit() else column for column in row] for row in list1]
 
-columns, rows, goldenPointsCount, silverPointsCount, tileTypes = list1[0]
+columns, rows, goldenPointsCount, silverPointsCount, tileCount = list1[0]
 
 
 def listToDict(list2, keys):
@@ -18,10 +18,11 @@ goldenPoints = listToDict(goldenPoints, ["x", "y"])
 silverPoints = list1[goldenPointsCount + 1:goldenPointsCount + 1 + silverPointsCount]
 silverPoints = listToDict(silverPoints, ["x", "y", "score"])
 
-tiles = list1[goldenPointsCount + 1 + silverPointsCount:goldenPointsCount + 1 + silverPointsCount + tileTypes]
+tiles = list1[goldenPointsCount + 1 + silverPointsCount:goldenPointsCount + 1 + silverPointsCount + tileCount]
 tiles = listToDict(tiles, ["id", "cost", "count"])
 
 costs = {str(tile["id"]): tile["cost"] for tile in tiles}
+tileCountPerType = {str(tile["id"]): tile["count"] for tile in tiles}
 
 tileToDirection = {
     "3": {"w", "e"},
