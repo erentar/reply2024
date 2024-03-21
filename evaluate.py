@@ -5,6 +5,7 @@ import networkx as nx
 from networkx import Graph
 from itertools import combinations
 
+
 """
 cardinals
     N
@@ -33,6 +34,13 @@ def connectedTo(coordinate: np.array(2), directions) -> list[tuple]:
 
 
 def evaluate(state: dict[tuple: str]) -> int:
+    # validation checks
+    if len(state) > tileCount:
+        return 0
+    for type in tileToDirection.keys():
+        amount = sum(1 for tile in state.values() if state[tile] == type)
+
+
     # sub grid with the same [0,0] but twice the density so all edges a coord
     graph = Graph()
 
@@ -81,6 +89,8 @@ def evaluate(state: dict[tuple: str]) -> int:
 
     if score < 0:
         score = 0
+
+
 
     return score
 
