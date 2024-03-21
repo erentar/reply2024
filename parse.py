@@ -21,6 +21,8 @@ silverPoints = listToDict(silverPoints, ["x", "y", "score"])
 tiles = list1[goldenPointsCount + 1 + silverPointsCount:goldenPointsCount + 1 + silverPointsCount + tileTypes]
 tiles = listToDict(tiles, ["id", "cost", "count"])
 
+costs = {str(tile["id"]): tile["cost"] for tile in tiles}
+
 tileToDirection = {
     "3": {"w", "e"},
     "5": {"s", "e"},
